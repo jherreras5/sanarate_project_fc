@@ -1,7 +1,7 @@
 /* Estilos base para el body */
 body {
     font-family: Arial, sans-serif;
-    background-image: url('../images/imagen_historia.jpg'); /* Cambia por la imagen de fondo de la historia */
+    background-image: url('../images/Partido-de-Sanarate-y-Guastatoya-por-el-Torneo-Apertura-Noviembre-2018-885x500.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -20,28 +20,14 @@ body {
     color: #fff !important;
 }
 
-/* Estilos para el header */
-.header {
-    background: rgba(52, 58, 64, 0.85); /* Fondo oscuro semitransparente */
-    color: #fff;
-    padding: 40px 0;
-    text-align: center;
+/* Sección de Historia */
+#historia-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
 }
 
-/* Hero section con efectos en la imagen */
-.hero-section .img-fluid {
-    border: 5px solid #007bff;
-    border-radius: 15px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.hero-section .img-fluid:hover {
-    transform: scale(1.05);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
-}
-
-/* Estilos para las tarjetas de eventos históricos */
 .evento-card {
     background-color: rgba(255, 255, 255, 0.9);
     transition: transform 0.3s, box-shadow 0.3s;
@@ -56,7 +42,7 @@ body {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-/* Imágenes dentro de las tarjetas de eventos */
+/* Imágenes dentro de las tarjetas */
 .evento-img {
     width: 100%;
     height: 200px;
@@ -65,7 +51,7 @@ body {
     border-top-right-radius: 10px;
 }
 
-/* Cuerpo de los eventos históricos */
+/* Cuerpo de las tarjetas de eventos */
 .evento-body {
     padding: 20px;
 }
@@ -81,11 +67,6 @@ body {
     font-size: 1rem;
     color: #555;
     margin-bottom: 15px;
-}
-
-.evento-date {
-    font-size: 0.9rem;
-    color: #6c757d;
 }
 
 /* Estilos para el footer */
@@ -121,7 +102,7 @@ body {
         max-width: calc(50% - 1.5rem);
     }
 
-    .evento-card .evento-img {
+    .evento-img {
         height: 150px;
     }
 }
@@ -132,19 +113,7 @@ body {
         max-width: 100%;
     }
 
-    .evento-card .evento-img {
+    .evento-img {
         height: 120px;
     }
-}
-
-.tabla-posiciones {
-    text-align: center;
-    margin-top: 20px;
-}
-
-.tabla-posiciones img {
-    border: 1px solid #ddd;
-    padding: 10px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
 }
