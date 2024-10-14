@@ -65,3 +65,13 @@ body {
 .text-danger {
     color: #dc3545;
 }
+@media (max-width: 768px) {
+    .container {
+      width: 100%;
+      padding: 10px;
+    }
+    .nav-menu {
+      display: block;
+    }
+  }
+  
