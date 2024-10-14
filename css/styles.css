@@ -1,10 +1,17 @@
+/* Estilos base */
 body {
     font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
+/* Navbar */
 .navbar {
     background-color: #007bff;
     padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .navbar-brand {
@@ -28,8 +35,9 @@ body {
     color: #ffc107;
 }
 
+/* Logo */
 .header-logo {
-    width: 70px;
+    max-width: 70px;
     height: auto;
     margin-right: 15px;
     border-radius: 50%;
@@ -42,6 +50,7 @@ body {
     box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
 }
 
+/* Footer */
 .footer {
     background-color: #343a40;
     color: white;
@@ -51,7 +60,7 @@ body {
 
 .footer p {
     margin: 0;
-    font-size: 0.9rem;
+    font-size: 1rem;
 }
 
 .text-center {
@@ -65,13 +74,50 @@ body {
 .text-danger {
     color: #dc3545;
 }
+
+/* Responsive adjustments */
 @media (max-width: 768px) {
-    .container {
-      width: 100%;
-      padding: 10px;
+    .navbar {
+        flex-direction: column;
+        text-align: center;
     }
-    .nav-menu {
-      display: block;
+
+    .navbar-brand {
+        font-size: 1.2rem;
     }
-  }
-  
+
+    .navbar-nav .nav-link {
+        font-size: 1rem;
+        padding: 0.5rem 0;
+    }
+
+    .header-logo {
+        max-width: 50px;
+    }
+
+    .footer p {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 0.5rem;
+    }
+
+    .header-logo {
+        max-width: 40px;
+    }
+
+    .navbar-brand {
+        font-size: 1rem;
+    }
+
+    .navbar-nav .nav-link {
+        font-size: 0.9rem;
+    }
+
+    .footer p {
+        font-size: 0.7rem;
+    }
+}
