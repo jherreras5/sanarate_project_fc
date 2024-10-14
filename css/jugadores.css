@@ -1,0 +1,51 @@
+#jugadores-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+.jugador-card {
+    flex: 1 1 calc(33.333% - 1.5rem);
+    max-width: calc(33.333% - 1.5rem);
+    transition: transform 0.3s;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+}
+
+.jugador-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.jugador-card img {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    width: 100%;
+    height: auto;
+}
+
+.jugador-card .card-body {
+    padding: 1rem;
+}
+
+.jugador-card .card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #007bff;
+    margin-bottom: 0.5rem;
+}
+
+.jugador-card .card-text {
+    font-size: 1rem;
+    color: #555;
+}
+
+.jugador-card .card-footer {
+    background-color: #f8f9fa;
+    padding: 0.75rem;
+    text-align: center;
+}
+

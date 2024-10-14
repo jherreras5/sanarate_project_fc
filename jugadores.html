@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jugadores - Club Deportivo Sanarate</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/jugadores.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="images/Sanarate.png" alt="Club Deportivo Sanarate" class="header-logo">
+                Club Deportivo Sanarate
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="jugadores.html">Jugadores</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="historia.html">Historia</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="partidos.html">Partidos</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Jugadores Section -->
+    <main class="container my-5">
+        <section id="jugadores" class="mb-5">
+            <h2 class="h4 mb-4 text-center">Nuestros Jugadores</h2>
+            <div id="jugadores-container" class="row">
+                <!-- Los jugadores se agregarán aquí dinámicamente mediante JavaScript -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="container text-center">
+            <p class="mb-0">&copy; 2024 Club Deportivo Sanarate. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            fetch('http://localhost:3000/players')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`Error en la respuesta: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const jugadoresContainer = document.getElementById('jugadores-container');
+                    if (jugadoresContainer) {
+                        jugadoresContainer.innerHTML = '';  // Limpiar contenido previo
+                        if (data.length === 0) {
+                            jugadoresContainer.innerHTML = '<p class="text-muted">No hay jugadores disponibles.</p>';
+                        } else {
+                            data.forEach(player => {
+                                const jugadorCard = document.createElement('div');
+                                jugadorCard.classList.add('jugador-card');
+                                jugadorCard.innerHTML = `
+                                    <div class="card">
+                                        <img src="http://localhost:3000/uploads/${player.photo}" class="card-img-top" alt="${player.name}">
+                                        <div class="card-body">
+                                            <h5 class="card-title">${player.name}</h5>
+                                            <p class="card-text">Posición: ${player.position}</p>
+                                        </div>
+                                    </div>`;
+                                jugadoresContainer.appendChild(jugadorCard); // Añadir la tarjeta al contenedor
+                            });
+                        }
+                    } else {
+                        console.error('El contenedor de jugadores no se encontró en el DOM.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error al obtener players:', error);
+                    const jugadoresContainer = document.getElementById('jugadores-container');
+                    if (jugadoresContainer) {
+                        jugadoresContainer.innerHTML = '<p class="text-danger">Error al cargar los jugadores. Inténtalo de nuevo más tarde.</p>';
+                    }
+                });
+        });
+    </script>
+</body>
+</html>

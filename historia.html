@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historia - Club Deportivo Sanarate</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/historia.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="images/Sanarate.png" alt="Club Deportivo Sanarate" class="header-logo">
+                Club Deportivo Sanarate
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="jugadores.html">Jugadores</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="historia.html">Historia</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="partidos.html">Partidos</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Historia Section -->
+    <main class="container my-5">
+        <section id="historia" class="mb-5">
+            <h2 class="h4 mb-4 text-center">Historia del Club Deportivo Sanarate</h2>
+            <div id="historia-container" class="row">
+                <!-- Los eventos históricos se agregarán aquí dinámicamente mediante JavaScript -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="container text-center">
+            <p class="mb-0">&copy; 2024 Club Deportivo Sanarate. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            fetch('http://localhost:3000/historia')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`Error en la respuesta: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const historiaContainer = document.getElementById('historia-container');
+                    if (historiaContainer) {
+                        historiaContainer.innerHTML = '';  // Limpiar contenido previo
+                        if (data.length === 0) {
+                            historiaContainer.innerHTML = '<p class="text-muted">No hay eventos históricos disponibles.</p>';
+                        } else {
+                            data.forEach(evento => {
+                                const eventoCard = document.createElement('div');
+                                eventoCard.classList.add('evento-card');
+                                eventoCard.innerHTML = `
+                                    <div class="card mb-4">
+                                        <img src="http://localhost:3000/uploads/${evento.imagen}" class="card-img-top" alt="${evento.evento}">
+                                        <div class="card-body">
+                                            <h5 class="card-title">${evento.evento}</h5>
+                                            <p class="card-text">${evento.descripcion}</p>
+                                            <p class="card-text"><small class="text-muted">Fecha del Evento: ${new Date(evento.fecha).toLocaleDateString()}</small></p>
+                                        </div>
+                                    </div>`;
+                                historiaContainer.appendChild(eventoCard); // Añadir la tarjeta al contenedor
+                            });
+                        }
+                    } else {
+                        console.error('El contenedor de historia no se encontró en el DOM.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error al obtener los eventos históricos:', error);
+                    const historiaContainer = document.getElementById('historia-container');
+                    if (historiaContainer) {
+                        historiaContainer.innerHTML = '<p class="text-danger">Error al cargar los eventos históricos. Inténtalo de nuevo más tarde.</p>';
+                    }
+                });
+        });
+    </script>
+</body>
+</html>

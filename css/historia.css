@@ -1,0 +1,137 @@
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('https://getbootstrap.com/docs/5.1/examples/heroes/background.jpg'); /* Cambia la URL a tu imagen de fondo */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #f8f9fa;
+}
+
+#historia-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+.evento-card {
+    flex: 1 1 calc(33.333% - 1.5rem);
+    max-width: calc(33.333% - 1.5rem);
+    transition: transform 0.3s;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.8); /* Fondo blanco con transparencia */
+    backdrop-filter: blur(5px); /* Desenfoque del fondo para dar un efecto elegante */
+}
+
+.evento-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+.evento-card img {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.evento-card .card-body {
+    padding: 1.5rem;
+}
+
+.evento-card .card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #007bff;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.evento-card .card-text {
+    font-size: 1rem;
+    color: #333;
+    text-align: justify;
+}
+
+.evento-card .card-footer {
+    background-color: #f8f9fa;
+    padding: 0.75rem;
+    text-align: center;
+    font-style: italic;
+}
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('https://getbootstrap.com/docs/5.1/examples/heroes/background.jpg'); /* Cambia la URL a tu imagen de fondo */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #f8f9fa;
+}
+
+#historia-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+.evento-card {
+    flex: 1 1 calc(33.333% - 1.5rem);
+    max-width: calc(33.333% - 1.5rem);
+    transition: transform 0.3s;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.8); /* Fondo blanco con transparencia */
+    backdrop-filter: blur(5px); /* Desenfoque del fondo para dar un efecto elegante */
+}
+
+.evento-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+.evento-card img {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.evento-card .card-body {
+    padding: 1.5rem;
+}
+
+.evento-card .card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #007bff;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.evento-card .card-text {
+    font-size: 1rem;
+    color: #333;
+    text-align: justify;
+}
+
+.evento-card .card-footer {
+    background-color: #f8f9fa;
+    padding: 0.75rem;
+    text-align: center;
+    font-style: italic;
+}
+
+/* Ajustar el color del texto del título */
+#historia h2 {
+    color: #ffffff; /* Cambia a blanco para mejorar la visibilidad */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Agregar sombra para contraste */
+    font-weight: bold;
+    font-size: 2rem; /* Ajusta el tamaño del texto para mayor legibilidad */
+    text-align: center;
+}
