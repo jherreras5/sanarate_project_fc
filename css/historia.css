@@ -1,6 +1,7 @@
+/* Estilos base */
 body {
     font-family: Arial, sans-serif;
-    background-image: url('https://getbootstrap.com/docs/5.1/examples/heroes/background.jpg'); /* Cambia la URL a tu imagen de fondo */
+    background-image: url('https://getbootstrap.com/docs/5.1/examples/heroes/background.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -12,6 +13,7 @@ body {
     flex-wrap: wrap;
     gap: 1.5rem;
     justify-content: center;
+    padding: 20px; /* Asegura que el contenido tenga margen en móviles */
 }
 
 .evento-card {
@@ -21,8 +23,8 @@ body {
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    background: rgba(255, 255, 255, 0.8); /* Fondo blanco con transparencia */
-    backdrop-filter: blur(5px); /* Desenfoque del fondo para dar un efecto elegante */
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(5px);
 }
 
 .evento-card:hover {
@@ -31,74 +33,8 @@ body {
 }
 
 .evento-card img {
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
     width: 100%;
-    height: 200px;
-    object-fit: cover;
-}
-
-.evento-card .card-body {
-    padding: 1.5rem;
-}
-
-.evento-card .card-title {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #007bff;
-    margin-bottom: 0.5rem;
-    text-align: center;
-}
-
-.evento-card .card-text {
-    font-size: 1rem;
-    color: #333;
-    text-align: justify;
-}
-
-.evento-card .card-footer {
-    background-color: #f8f9fa;
-    padding: 0.75rem;
-    text-align: center;
-    font-style: italic;
-}
-body {
-    font-family: Arial, sans-serif;
-    background-image: url('https://getbootstrap.com/docs/5.1/examples/heroes/background.jpg'); /* Cambia la URL a tu imagen de fondo */
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    color: #f8f9fa;
-}
-
-#historia-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    justify-content: center;
-}
-
-.evento-card {
-    flex: 1 1 calc(33.333% - 1.5rem);
-    max-width: calc(33.333% - 1.5rem);
-    transition: transform 0.3s;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    background: rgba(255, 255, 255, 0.8); /* Fondo blanco con transparencia */
-    backdrop-filter: blur(5px); /* Desenfoque del fondo para dar un efecto elegante */
-}
-
-.evento-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
-}
-
-.evento-card img {
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    width: 100%;
-    height: 200px;
+    height: auto; /* Cambiar para que la altura se ajuste automáticamente */
     object-fit: cover;
 }
 
@@ -127,11 +63,34 @@ body {
     font-style: italic;
 }
 
-/* Ajustar el color del texto del título */
+/* Ajuste de título */
 #historia h2 {
-    color: #ffffff; /* Cambia a blanco para mejorar la visibilidad */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Agregar sombra para contraste */
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
     font-weight: bold;
-    font-size: 2rem; /* Ajusta el tamaño del texto para mayor legibilidad */
+    font-size: 2rem;
     text-align: center;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .evento-card {
+        flex: 1 1 calc(50% - 1.5rem); /* Cambia a dos columnas en pantallas medianas */
+        max-width: calc(50% - 1.5rem);
+    }
+
+    #historia h2 {
+        font-size: 1.8rem; /* Reduce el tamaño del texto en pantallas medianas */
+    }
+}
+
+@media (max-width: 480px) {
+    .evento-card {
+        flex: 1 1 100%; /* Una columna en pantallas pequeñas */
+        max-width: 100%;
+    }
+
+    #historia h2 {
+        font-size: 1.5rem; /* Reduce aún más el tamaño del texto en pantallas pequeñas */
+    }
 }

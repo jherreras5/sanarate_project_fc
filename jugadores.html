@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Club Deportivo Sanarate</title>
+    
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/jugadores.css">
@@ -57,7 +59,11 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+
+    <!-- Fetching Jugadores Script -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             fetch('http://localhost:3000/players')
@@ -76,9 +82,9 @@
                         } else {
                             data.forEach(player => {
                                 const jugadorCard = document.createElement('div');
-                                jugadorCard.classList.add('jugador-card');
+                                jugadorCard.classList.add('col-md-4', 'mb-4');  // Usar Bootstrap grid para tarjetas
                                 jugadorCard.innerHTML = `
-                                    <div class="card">
+                                    <div class="card jugador-card">
                                         <img src="http://localhost:3000/uploads/${player.photo}" class="card-img-top" alt="${player.name}">
                                         <div class="card-body">
                                             <h5 class="card-title">${player.name}</h5>

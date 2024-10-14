@@ -1,6 +1,8 @@
+/* Estilos base para el body */
 body {
     font-family: Arial, sans-serif;
-    background-image: url('../images/461410469_1097325532393576_1831316689718071098_n.jpg'), url('../images/Partido-de-Sanarate-y-Guastatoya-por-el-Torneo-Apertura-Noviembre-2018-885x500.jpg');
+    background-image: url('../images/461410469_1097325532393576_1831316689718071098_n.jpg'), 
+                      url('../images/Partido-de-Sanarate-y-Guastatoya-por-el-Torneo-Apertura-Noviembre-2018-885x500.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -8,6 +10,7 @@ body {
     color: #333;
 }
 
+/* Estilos para la barra de navegación */
 .navbar {
     background-color: rgba(0, 123, 255, 0.85);
     padding: 1rem;
@@ -18,6 +21,7 @@ body {
     color: #fff !important;
 }
 
+/* Estilos para el header */
 .header {
     background: rgba(52, 58, 64, 0.85);
     color: #fff;
@@ -25,6 +29,7 @@ body {
     text-align: center;
 }
 
+/* Hero section con efectos en la imagen */
 .hero-section .img-fluid {
     border: 5px solid #007bff;
     border-radius: 15px;
@@ -37,13 +42,14 @@ body {
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
 }
 
+/* Estilos para las tarjetas de noticias */
 .noticia-card {
     background-color: rgba(255, 255, 255, 0.9);
     transition: transform 0.3s, box-shadow 0.3s;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    color: #333; /* Color del texto dentro de las tarjetas */
+    color: #333;
 }
 
 .noticia-card:hover {
@@ -51,6 +57,7 @@ body {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
+/* Imágenes dentro de las tarjetas */
 .noticia-img {
     width: 100%;
     height: 200px;
@@ -59,6 +66,7 @@ body {
     border-top-right-radius: 10px;
 }
 
+/* Cuerpo de las noticias */
 .noticia-body {
     padding: 20px;
 }
@@ -81,6 +89,7 @@ body {
     color: #6c757d;
 }
 
+/* Estilos para el footer */
 .footer {
     background-color: rgba(52, 58, 64, 0.85);
     color: white;
@@ -93,6 +102,7 @@ body {
     font-size: 0.9rem;
 }
 
+/* Contenedor de noticias con flexbox */
 #noticias-container {
     display: flex;
     flex-wrap: wrap;
@@ -103,4 +113,27 @@ body {
 .noticia-card-container {
     flex: 1 1 calc(33.333% - 2rem);
     max-width: calc(33.333% - 2rem);
+}
+
+/* Media Queries para Pantallas Pequeñas */
+@media (max-width: 768px) {
+    .noticia-card-container {
+        flex: 1 1 calc(50% - 1.5rem);
+        max-width: calc(50% - 1.5rem);
+    }
+
+    .noticia-card .noticia-img {
+        height: 150px;
+    }
+}
+
+@media (max-width: 480px) {
+    .noticia-card-container {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+
+    .noticia-card .noticia-img {
+        height: 120px;
+    }
 }

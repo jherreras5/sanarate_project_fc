@@ -1,10 +1,23 @@
+/* Asegurar que el body permita el desplazamiento vertical */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    overflow-y: auto; /* Asegura el desplazamiento vertical */
+}
+
+/* Contenedor de los jugadores */
 #jugadores-container {
     display: flex;
     flex-wrap: wrap;
     gap: 1.5rem;
     justify-content: center;
+    align-items: flex-start; /* Asegura que los elementos se alineen correctamente */
+    overflow: visible; /* Permitir que el contenido se expanda */
+    min-height: 100vh; /* Ocupa al menos la altura completa de la ventana */
 }
 
+/* Jugador Card */
 .jugador-card {
     flex: 1 1 calc(33.333% - 1.5rem);
     max-width: calc(33.333% - 1.5rem);
@@ -20,13 +33,16 @@
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
+/* Ajuste de imágenes para evitar estiramiento */
 .jugador-card img {
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
     width: 100%;
-    height: auto;
+    height: 250px; /* Fijamos la altura para pantallas grandes */
+    object-fit: cover; /* Mantiene la proporción y corta el exceso si es necesario */
 }
 
+/* Contenido de las tarjetas */
 .jugador-card .card-body {
     padding: 1rem;
 }
@@ -49,3 +65,40 @@
     text-align: center;
 }
 
+/* Media Query para Pantallas Pequeñas */
+@media (max-width: 768px) {
+    .jugador-card {
+        flex: 1 1 calc(50% - 1rem);
+        max-width: calc(50% - 1rem);
+    }
+
+    .jugador-card .card-title {
+        font-size: 1.1rem;
+    }
+
+    .jugador-card img {
+        height: 200px; /* Ajustamos la altura para pantallas medianas */
+        object-fit: cover;
+    }
+}
+
+@media (max-width: 480px) {
+    .jugador-card {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+
+    .jugador-card .card-title {
+        font-size: 1rem;
+    }
+
+    .jugador-card img {
+        height: auto; /* Dejamos que la altura se ajuste automáticamente */
+        object-fit: contain; /* Muestra toda la imagen sin recortar */
+        max-width: 100%; /* Asegura que la imagen no se desborde */
+    }
+
+    .jugador-card .card-body {
+        padding: 0.75rem;
+    }
+}
