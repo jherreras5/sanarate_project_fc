@@ -137,3 +137,15 @@ body {
         height: 120px;
     }
 }
+
+.tabla-posiciones {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.tabla-posiciones img {
+    border: 1px solid #ddd;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}

@@ -1,50 +1,118 @@
+/* Estilos base para el body */
+body {
+    font-family: Arial, sans-serif;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    color: #333;
+}
+
+/* Estilos para la barra de navegación */
+.navbar {
+    background-color: rgba(0, 123, 255, 0.85);
+    padding: 1rem;
+}
+
+.navbar-brand,
+.navbar-nav .nav-link {
+    color: #fff !important;
+}
+
+/* Sección de Partidos */
 #matches-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 1.5rem;
+    gap: 2rem;
     justify-content: center;
 }
 
 .match-card {
-    flex: 1 1 calc(33.333% - 1.5rem);
-    max-width: calc(33.333% - 1.5rem);
-    transition: transform 0.3s;
-    border-radius: 15px;
+    background-color: rgba(255, 255, 255, 0.9);
+    transition: transform 0.3s, box-shadow 0.3s;
+    border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: #ffffff;
+    color: #333;
 }
 
 .match-card:hover {
-    transform: scale(1.05);
+    transform: scale(1.03);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-.match-card img {
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
+/* Imágenes dentro de las tarjetas */
+.match-img {
     width: 100%;
-    height: auto;
+    height: 200px;
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
-.match-card .card-body {
-    padding: 1rem;
+/* Cuerpo de las tarjetas de partidos */
+.match-body {
+    padding: 20px;
 }
 
-.match-card .card-title {
-    font-size: 1.25rem;
+.match-title {
+    font-size: 1.5rem;
     font-weight: bold;
     color: #007bff;
-    margin-bottom: 0.5rem;
+    margin-bottom: 10px;
 }
 
-.match-card .card-text {
+.match-text {
     font-size: 1rem;
     color: #555;
+    margin-bottom: 15px;
 }
 
-.match-card .card-footer {
-    background-color: #f8f9fa;
-    padding: 0.75rem;
+/* Estilos para el footer */
+.footer {
+    background-color: rgba(52, 58, 64, 0.85);
+    color: white;
+    padding: 20px 0;
     text-align: center;
+}
+
+.footer p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* Contenedor de partidos con flexbox */
+#matches-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+}
+
+.match-card-container {
+    flex: 1 1 calc(33.333% - 2rem);
+    max-width: calc(33.333% - 2rem);
+}
+
+/* Media Queries para Pantallas Pequeñas */
+@media (max-width: 768px) {
+    .match-card-container {
+        flex: 1 1 calc(50% - 1.5rem);
+        max-width: calc(50% - 1.5rem);
+    }
+
+    .match-img {
+        height: 150px;
+    }
+}
+
+@media (max-width: 480px) {
+    .match-card-container {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+
+    .match-img {
+        height: 120px;
+    }
 }

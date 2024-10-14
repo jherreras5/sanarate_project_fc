@@ -1,96 +1,150 @@
-/* Estilos base */
+/* Estilos base para el body */
 body {
     font-family: Arial, sans-serif;
-    background-image: url('https://getbootstrap.com/docs/5.1/examples/heroes/background.jpg');
-    background-size: cover;
+    background-image: url('../images/imagen_historia.jpg'); /* Cambia por la imagen de fondo de la historia */
     background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     background-attachment: fixed;
-    color: #f8f9fa;
+    color: #333;
 }
 
-#historia-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    justify-content: center;
-    padding: 20px; /* Asegura que el contenido tenga margen en móviles */
+/* Estilos para la barra de navegación */
+.navbar {
+    background-color: rgba(0, 123, 255, 0.85);
+    padding: 1rem;
 }
 
-.evento-card {
-    flex: 1 1 calc(33.333% - 1.5rem);
-    max-width: calc(33.333% - 1.5rem);
-    transition: transform 0.3s;
+.navbar-brand,
+.navbar-nav .nav-link {
+    color: #fff !important;
+}
+
+/* Estilos para el header */
+.header {
+    background: rgba(52, 58, 64, 0.85); /* Fondo oscuro semitransparente */
+    color: #fff;
+    padding: 40px 0;
+    text-align: center;
+}
+
+/* Hero section con efectos en la imagen */
+.hero-section .img-fluid {
+    border: 5px solid #007bff;
     border-radius: 15px;
-    overflow: hidden;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(5px);
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.evento-card:hover {
+.hero-section .img-fluid:hover {
     transform: scale(1.05);
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
 }
 
-.evento-card img {
+/* Estilos para las tarjetas de eventos históricos */
+.evento-card {
+    background-color: rgba(255, 255, 255, 0.9);
+    transition: transform 0.3s, box-shadow 0.3s;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: #333;
+}
+
+.evento-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Imágenes dentro de las tarjetas de eventos */
+.evento-img {
     width: 100%;
-    height: auto; /* Cambiar para que la altura se ajuste automáticamente */
+    height: 200px;
     object-fit: cover;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
-.evento-card .card-body {
-    padding: 1.5rem;
+/* Cuerpo de los eventos históricos */
+.evento-body {
+    padding: 20px;
 }
 
-.evento-card .card-title {
+.evento-title {
     font-size: 1.5rem;
     font-weight: bold;
     color: #007bff;
-    margin-bottom: 0.5rem;
-    text-align: center;
+    margin-bottom: 10px;
 }
 
-.evento-card .card-text {
+.evento-text {
     font-size: 1rem;
-    color: #333;
-    text-align: justify;
+    color: #555;
+    margin-bottom: 15px;
 }
 
-.evento-card .card-footer {
-    background-color: #f8f9fa;
-    padding: 0.75rem;
-    text-align: center;
-    font-style: italic;
+.evento-date {
+    font-size: 0.9rem;
+    color: #6c757d;
 }
 
-/* Ajuste de título */
-#historia h2 {
-    color: #ffffff;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-    font-weight: bold;
-    font-size: 2rem;
+/* Estilos para el footer */
+.footer {
+    background-color: rgba(52, 58, 64, 0.85);
+    color: white;
+    padding: 20px 0;
     text-align: center;
 }
 
-/* Media Queries */
+.footer p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* Contenedor de eventos con flexbox */
+#historia-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+}
+
+.evento-card-container {
+    flex: 1 1 calc(33.333% - 2rem);
+    max-width: calc(33.333% - 2rem);
+}
+
+/* Media Queries para Pantallas Pequeñas */
 @media (max-width: 768px) {
-    .evento-card {
-        flex: 1 1 calc(50% - 1.5rem); /* Cambia a dos columnas en pantallas medianas */
+    .evento-card-container {
+        flex: 1 1 calc(50% - 1.5rem);
         max-width: calc(50% - 1.5rem);
     }
 
-    #historia h2 {
-        font-size: 1.8rem; /* Reduce el tamaño del texto en pantallas medianas */
+    .evento-card .evento-img {
+        height: 150px;
     }
 }
 
 @media (max-width: 480px) {
-    .evento-card {
-        flex: 1 1 100%; /* Una columna en pantallas pequeñas */
+    .evento-card-container {
+        flex: 1 1 100%;
         max-width: 100%;
     }
 
-    #historia h2 {
-        font-size: 1.5rem; /* Reduce aún más el tamaño del texto en pantallas pequeñas */
+    .evento-card .evento-img {
+        height: 120px;
     }
+}
+
+.tabla-posiciones {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.tabla-posiciones img {
+    border: 1px solid #ddd;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
 }
