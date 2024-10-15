@@ -66,32 +66,37 @@
     <!-- Fetching Jugadores Script -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            fetch('http://localhost:3000/players')
+            fetch('https://localhost:44352/api/Player/Lista')  // Cambia esta URL si es necesario para que coincida con tu entorno
                 .then(response => {
                     if (!response.ok) {
                         throw new Error(`Error en la respuesta: ${response.status}`);
                     }
                     return response.json();
                 })
-                .then(data => {
+                .then(players => {
                     const jugadoresContainer = document.getElementById('jugadores-container');
                     if (jugadoresContainer) {
                         jugadoresContainer.innerHTML = '';  // Limpiar contenido previo
-                        if (data.length === 0) {
+                        if (players.length === 0) {
                             jugadoresContainer.innerHTML = '<p class="text-muted">No hay jugadores disponibles.</p>';
                         } else {
-                            data.forEach(player => {
-                                const jugadorCard = document.createElement('div');
-                                jugadorCard.classList.add('col-md-4', 'mb-4');  // Usar Bootstrap grid para tarjetas
-                                jugadorCard.innerHTML = `
-                                    <div class="card jugador-card">
-                                        <img src="http://localhost:3000/uploads/${player.photo}" class="card-img-top" alt="${player.name}">
+                            players.forEach(player => {
+                                const playerCard = document.createElement('div');
+                                playerCard.classList.add('col-md-4', 'mb-4');  // Usar Bootstrap grid para tarjetas
+    
+                                // Verifica si hay una foto disponible, si no, usa una imagen por defecto
+                                const playerPhoto = player.photo ? player.photo : 'ruta/de/imagen/por/defecto.jpg';
+    
+                                playerCard.innerHTML = `
+                                    <div class="card player-card">
+                                        <img src="${playerPhoto}" class="card-img-top" alt="${player.name}">
                                         <div class="card-body">
                                             <h5 class="card-title">${player.name}</h5>
                                             <p class="card-text">Posición: ${player.position}</p>
+                                            <p class="card-text">Número: ${player.number}</p>
                                         </div>
                                     </div>`;
-                                jugadoresContainer.appendChild(jugadorCard); // Añadir la tarjeta al contenedor
+                                jugadoresContainer.appendChild(playerCard); // Añadir la tarjeta al contenedor
                             });
                         }
                     } else {
@@ -99,7 +104,7 @@
                     }
                 })
                 .catch(error => {
-                    console.error('Error al obtener players:', error);
+                    console.error('Error al obtener los jugadores:', error);
                     const jugadoresContainer = document.getElementById('jugadores-container');
                     if (jugadoresContainer) {
                         jugadoresContainer.innerHTML = '<p class="text-danger">Error al cargar los jugadores. Inténtalo de nuevo más tarde.</p>';
@@ -107,5 +112,6 @@
                 });
         });
     </script>
+    
 </body>
 </html>
