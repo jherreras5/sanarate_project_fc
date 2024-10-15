@@ -66,7 +66,7 @@
     <!-- Fetching Historia Script -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            fetch('http://localhost:3000/historia')
+            fetch('https://api-sanarate-3195fb625ccf.herokuapp.com/historia')
                 .then(response => {
                     if (!response.ok) {
                         throw new Error(`Error en la respuesta: ${response.status}`);
@@ -85,7 +85,7 @@
                                 eventoCard.classList.add('col-md-4', 'mb-4');  // Usar Bootstrap grid para tarjetas
                                 eventoCard.innerHTML = `
                                     <div class="card evento-card">
-                                        <img src="http://localhost:3000/uploads/${evento.imagen}" class="card-img-top" alt="${evento.evento}">
+                                        <img src="https://api-sanarate-3195fb625ccf.herokuapp.com/uploads/${evento.imagen}" class="card-img-top" alt="${evento.evento}">
                                         <div class="card-body">
                                             <h5 class="card-title">${evento.evento}</h5>
                                             <p class="card-text">${evento.descripcion}</p>
