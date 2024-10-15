@@ -64,29 +64,54 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
 
     <!-- Fetching Partidos Script -->
+   
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            fetch('http://localhost:3000/matches')
+    
+            // Función para obtener el nombre de un equipo dado su id
+            function getTeamNameById(teamId) {
+                return fetch(`https://localhost:44352/api/Team/Obtener/${teamId}`)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(`Error al obtener equipo: ${response.status}`);
+                        }
+                        return response.json();
+                    })
+                    .then(team => {
+                        return team.name;  // Retornar el nombre del equipo
+                    })
+                    .catch(error => {
+                        console.error('Error al obtener el nombre del equipo:', error);
+                        return 'Equipo no disponible';  // Valor por defecto en caso de error
+                    });
+            }
+    
+            // Obtener la lista de partidos
+            fetch('https://localhost:44352/api/Match/Lista')
                 .then(response => {
                     if (!response.ok) {
                         throw new Error(`Error en la respuesta: ${response.status}`);
                     }
                     return response.json();
                 })
-                .then(data => {
+                .then(matches => {
                     const matchesContainer = document.getElementById('matches-container');
                     if (matchesContainer) {
                         matchesContainer.innerHTML = '';  // Limpiar contenido previo
-                        if (data.length === 0) {
+                        if (matches.length === 0) {
                             matchesContainer.innerHTML = '<p class="text-muted">No hay partidos disponibles.</p>';
                         } else {
-                            data.forEach(match => {
+                            matches.forEach(async match => {
+                                // Obtener nombres de los equipos basado en el id
+                                const team1Name = await getTeamNameById(match.team1_id);
+                                const team2Name = await getTeamNameById(match.team2_id);
+    
                                 const matchCard = document.createElement('div');
                                 matchCard.classList.add('col-md-4', 'mb-4');
                                 matchCard.innerHTML = `
                                     <div class="card">
                                         <div class="card-body">
-                                            <h5 class="card-title">${match.team1} vs ${match.team2}</h5>
+                                            <h5 class="card-title">${team1Name} vs ${team2Name}</h5>
                                             <p class="card-text">Fecha: ${new Date(match.date).toLocaleString()}</p>
                                             <p class="card-text">Lugar: ${match.venue}</p>
                                             <p class="card-text">Estado: ${match.status}</p>
@@ -108,5 +133,7 @@
                 });
         });
     </script>
+     
+    
 </body>
 </html>

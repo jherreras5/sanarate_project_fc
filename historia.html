@@ -65,7 +65,7 @@
     <!-- Fetching Historia Script -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            fetch('https://localhost:44352/api/Historia/Lista')
+            fetch('https://localhost:44352/api/Historia/Lista')  // Cambia esta URL si es necesario para que coincida con tu entorno
                 .then(response => {
                     if (!response.ok) {
                         throw new Error(`Error en la respuesta: ${response.status}`);
@@ -77,21 +77,25 @@
                     if (historiaContainer) {
                         historiaContainer.innerHTML = '';  // Limpiar contenido previo
                         if (data.length === 0) {
-                            historiaContainer.innerHTML = '<p class="text-muted">No hay eventos históricos disponibles.</p>';
+                            historiaContainer.innerHTML = '<p class="text-muted">No hay historia disponible.</p>';
                         } else {
-                            data.forEach(evento => {
-                                const eventoCard = document.createElement('div');
-                                eventoCard.classList.add('col-md-4', 'mb-4');  // Usar Bootstrap grid para tarjetas
-                                eventoCard.innerHTML = `
-                                    <div class="card evento-card">
-                                        <img src="https://localhost:44352/api/Historia/Lista/uploads/${evento.imagen}" class="card-img-top" alt="${evento.evento}">
-                                        <div class="card-body">
-                                            <h5 class="card-title">${evento.evento}</h5>
-                                            <p class="card-text">${evento.descripcion}</p>
-                                            <p class="card-text"><small class="text-muted">Fecha del Evento: ${new Date(evento.fecha).toLocaleDateString()}</small></p>
+                            data.forEach(historia => {
+                                const historiaCard = document.createElement('div');
+                                historiaCard.classList.add('col-md-4', 'mb-4');  // Usar Bootstrap grid para tarjetas
+    
+                                // Verifica si hay una imagen disponible, si no, usa una imagen por defecto
+                                const historiaImage = historia.imagen ? `https://localhost:44352/uploads/${historia.imagen}` : 'ruta/de/imagen/por/defecto.jpg';
+    
+                                historiaCard.innerHTML = `
+                                    <div class="card historia-card h-100">
+                                        <img src="${historiaImage}" class="historia-img card-img-top" alt="${historia.evento}">
+                                        <div class="card-body historia-body">
+                                            <h5 class="historia-title">${historia.evento}</h5>
+                                            <p class="historia-text">${historia.descripcion.substring(0, 100)}...</p>
+                                            <p class="historia-date">Fecha del evento: ${new Date(historia.fecha).toLocaleDateString()}</p>
                                         </div>
                                     </div>`;
-                                historiaContainer.appendChild(eventoCard); // Añadir la tarjeta al contenedor
+                                historiaContainer.appendChild(historiaCard); // Añadir la tarjeta al contenedor
                             });
                         }
                     } else {
@@ -99,13 +103,14 @@
                     }
                 })
                 .catch(error => {
-                    console.error('Error al obtener los eventos históricos:', error);
+                    console.error('Error al obtener la historia:', error);
                     const historiaContainer = document.getElementById('historia-container');
                     if (historiaContainer) {
-                        historiaContainer.innerHTML = '<p class="text-danger">Error al cargar los eventos históricos. Inténtalo de nuevo más tarde.</p>';
+                        historiaContainer.innerHTML = '<p class="text-danger">Error al cargar la historia. Inténtalo de nuevo más tarde.</p>';
                     }
                 });
         });
     </script>
+    
 </body>
 </html>

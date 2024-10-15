@@ -85,7 +85,7 @@
                                 playerCard.classList.add('col-md-4', 'mb-4');  // Usar Bootstrap grid para tarjetas
     
                                 // Verifica si hay una foto disponible, si no, usa una imagen por defecto
-                                const playerPhoto = player.photo ? player.photo : 'ruta/de/imagen/por/defecto.jpg';
+                                const playerPhoto = player.photo ? `https://localhost:44352/uploads/${player.photo}` : 'ruta/de/imagen/por/defecto.jpg';
     
                                 playerCard.innerHTML = `
                                     <div class="card player-card">
@@ -112,6 +112,7 @@
                 });
         });
     </script>
+    
     
 </body>
 </html>
