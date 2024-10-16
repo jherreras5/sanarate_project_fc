@@ -8,7 +8,6 @@
     <title>Club Deportivo Sanarate</title>
     
     <!-- Bootstrap CSS -->
-
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
@@ -65,7 +64,7 @@
     <!-- Fetching Historia Script -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            fetch('http://128.199.6.21/api/Historia/Lista')  // Cambia esta URL si es necesario para que coincida con tu entorno
+            fetch('http://128.199.6.21/api/Historia/Lista')  // Cambia esta URL por la de tu nueva API
                 .then(response => {
                     if (!response.ok) {
                         throw new Error(`Error en la respuesta: ${response.status}`);
@@ -84,9 +83,8 @@
                                 historiaCard.classList.add('col-md-4', 'mb-4');  // Usar Bootstrap grid para tarjetas
     
                                 // Verifica si hay una imagen disponible, si no, usa una imagen por defecto
-const historiaImage = historia.imagen ? `http://128.199.6.21/uploads/${historia.imagen}` : 'ruta/de/imagen/por/defecto.jpg';
+                                const historiaImage = historia.imagen ? `http://128.199.6.21/uploads/${historia.imagen}` : 'ruta/de/imagen/por/defecto.jpg';
 
-    
                                 historiaCard.innerHTML = `
                                     <div class="card historia-card h-100">
                                         <img src="${historiaImage}" class="historia-img card-img-top" alt="${historia.evento}">
