@@ -65,7 +65,7 @@
     <!-- Fetching Historia Script -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            fetch('https://localhost:44352/api/Historia/Lista')  // Cambia esta URL si es necesario para que coincida con tu entorno
+            fetch('http://128.199.6.21/api/Historia/Lista')  // Cambia esta URL si es necesario para que coincida con tu entorno
                 .then(response => {
                     if (!response.ok) {
                         throw new Error(`Error en la respuesta: ${response.status}`);
@@ -84,7 +84,8 @@
                                 historiaCard.classList.add('col-md-4', 'mb-4');  // Usar Bootstrap grid para tarjetas
     
                                 // Verifica si hay una imagen disponible, si no, usa una imagen por defecto
-                                const historiaImage = historia.imagen ? `https://localhost:44352/uploads/${historia.imagen}` : 'ruta/de/imagen/por/defecto.jpg';
+const historiaImage = historia.imagen ? `http://128.199.6.21/uploads/${historia.imagen}` : 'ruta/de/imagen/por/defecto.jpg';
+
     
                                 historiaCard.innerHTML = `
                                     <div class="card historia-card h-100">
