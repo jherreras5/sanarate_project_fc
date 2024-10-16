@@ -64,51 +64,50 @@
     <!-- Fetching Historia Script -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            fetch('http://128.199.6.21/api/Historia/Lista')  // Cambia esta URL por la de tu nueva API
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error(`Error en la respuesta: ${response.status}`);
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    const historiaContainer = document.getElementById('historia-container');
-                    if (historiaContainer) {
-                        historiaContainer.innerHTML = '';  // Limpiar contenido previo
-                        if (data.length === 0) {
-                            historiaContainer.innerHTML = '<p class="text-muted">No hay historia disponible.</p>';
-                        } else {
-                            data.forEach(historia => {
-                                const historiaCard = document.createElement('div');
-                                historiaCard.classList.add('col-md-4', 'mb-4');  // Usar Bootstrap grid para tarjetas
-    
-                                // Verifica si hay una imagen disponible, si no, usa una imagen por defecto
-                                const historiaImage = historia.imagen ? `http://128.199.6.21/uploads/${historia.imagen}` : 'ruta/de/imagen/por/defecto.jpg';
+    fetch('https://apisanarate.com/api/Historia/Lista')  // Cambia a HTTPS
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Error en la respuesta: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            const historiaContainer = document.getElementById('historia-container');
+            if (historiaContainer) {
+                historiaContainer.innerHTML = '';  // Limpiar contenido previo
+                if (data.length === 0) {
+                    historiaContainer.innerHTML = '<p class="text-muted">No hay historia disponible.</p>';
+                } else {
+                    data.forEach(historia => {
+                        const historiaCard = document.createElement('div');
+                        historiaCard.classList.add('col-md-4', 'mb-4');
+                        const historiaImage = historia.imagen ? `https://128.199.6.21/uploads/${historia.imagen}` : 'ruta/de/imagen/por/defecto.jpg';
 
-                                historiaCard.innerHTML = `
-                                    <div class="card historia-card h-100">
-                                        <img src="${historiaImage}" class="historia-img card-img-top" alt="${historia.evento}">
-                                        <div class="card-body historia-body">
-                                            <h5 class="historia-title">${historia.evento}</h5>
-                                            <p class="historia-text">${historia.descripcion.substring(0, 100)}...</p>
-                                            <p class="historia-date">Fecha del evento: ${new Date(historia.fecha).toLocaleDateString()}</p>
-                                        </div>
-                                    </div>`;
-                                historiaContainer.appendChild(historiaCard); // Añadir la tarjeta al contenedor
-                            });
-                        }
-                    } else {
-                        console.error('El contenedor de historia no se encontró en el DOM.');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error al obtener la historia:', error);
-                    const historiaContainer = document.getElementById('historia-container');
-                    if (historiaContainer) {
-                        historiaContainer.innerHTML = '<p class="text-danger">Error al cargar la historia. Inténtalo de nuevo más tarde.</p>';
-                    }
-                });
+                        historiaCard.innerHTML = `
+                            <div class="card historia-card h-100">
+                                <img src="${historiaImage}" class="historia-img card-img-top" alt="${historia.evento}">
+                                <div class="card-body historia-body">
+                                    <h5 class="historia-title">${historia.evento}</h5>
+                                    <p class="historia-text">${historia.descripcion.substring(0, 100)}...</p>
+                                    <p class="historia-date">Fecha del evento: ${new Date(historia.fecha).toLocaleDateString()}</p>
+                                </div>
+                            </div>`;
+                        historiaContainer.appendChild(historiaCard);
+                    });
+                }
+            } else {
+                console.error('El contenedor de historia no se encontró en el DOM.');
+            }
+        })
+        .catch(error => {
+            console.error('Error al obtener la historia:', error);
+            const historiaContainer = document.getElementById('historia-container');
+            if (historiaContainer) {
+                historiaContainer.innerHTML = '<p class="text-danger">Error al cargar la historia. Inténtalo de nuevo más tarde.</p>';
+            }
         });
+});
+
     </script>
     
 </body>
